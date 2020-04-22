@@ -16,7 +16,7 @@ class Controller extends BaseController
     public function responseFail(\Exception $exception)
     {
         return response([
-            'message' => 'Something went wrong',
+            'message' => $exception->getMessage(),
             'errors' => []
         ], $exception->getCode());
     }

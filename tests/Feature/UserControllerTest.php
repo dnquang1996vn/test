@@ -14,9 +14,13 @@ class UserControllerTest extends TestCase
     {
         factory(\App\Models\User::class, 3)->create();
 
-        $this->json('get','/user')
-        ->receiveJson([
-            'data' => \App\Models\User::all()->toArray()
-        ]);
+        $response = $this->json('get','/user');
+
+//        dd($response->response->getContent());
+
+        $response->receiveJson([
+        'data' => \App\Models\User::all()->toArray()
+    ]);
+
     }
 }
